@@ -26,8 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    namespace "com.example.floating_numpad"
-    compileSdkVersion flutter.compileSdkVersion
+    compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -48,8 +47,8 @@ android {
         applicationId "com.example.floating_numpad"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion flutter.minSdkVersion
-        targetSdkVersion flutter.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 31
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -61,7 +60,11 @@ android {
             signingConfig signingConfigs.debug
         }
     }
+    aaptOptions {
+        noCompress "tflite"  // Your model's file extension: "tflite", "lite", etc.
+    }
 }
+
 
 flutter {
     source '../..'
